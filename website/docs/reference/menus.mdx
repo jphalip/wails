@@ -14,6 +14,10 @@ An example of how to create a menu:
 
     app := NewApp()
 
+    if runtime.GOOS == "darwin" {
+        AppMenu.Append(menu.AppMenu())  // on macos platform, add the whole default "App" menu (About, Services, etc.)
+    }
+
     AppMenu := menu.NewMenu()
     FileMenu := AppMenu.AddSubmenu("File")
     FileMenu.AddText("&Open", keys.CmdOrCtrl("o"), openFile)
